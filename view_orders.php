@@ -859,8 +859,8 @@ if (isset($_GET['inward_return_id'])) {
         $conn->query("DELETE FROM customer_returns WHERE sr_no = $id");
 
         // Step 4: Redirect with success message
-        session_start();
-        $_SESSION['success_msg'] = "✅ Return moved to Inward To Shop successfully (SR No preserved).";
+       // session_start();
+       // $_SESSION['success_msg'] = "✅ Return moved to Inward To Shop successfully (SR No preserved).";
         header("Location: view_orders.php");
         exit;
     } else {
