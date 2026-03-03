@@ -816,7 +816,20 @@ if (isset($_GET['inward_return_id'])) {
     $result = $conn->query("SELECT * FROM customer_returns WHERE sr_no = $id");
     if ($row = $result->fetch_assoc()) {
 
-        // Step 2: Insert into inward_to_shop with same sr_no (no AUTO_INCREMENT)
+        // 🔥 Simulated Trigger Logic
+        $gross_price = $row['gross_price'];
+
+        if ($gross_price <= 0) {
+            $gross_price = 10;
+
+            // Optional: also update main orders table (like your original trigger)
+            $updateOrder = $conn->prepare("UPDATE orders SET gross_price = 10 WHERE order_id = ?");
+            $updateOrder->bind_param("s", $row['order_id']);
+            $updateOrder->execute();
+            $updateOrder->close();
+        }
+
+        // Step 2: Insert into inward_to_shop
         $stmt = $conn->prepare("
             INSERT INTO inward_to_shop (
                 sr_no, order_id, order_date, order_type, product_name,
@@ -833,11 +846,12 @@ if (isset($_GET['inward_return_id'])) {
             $row['order_type'],
             $row['product_name'],
             $row['quantity'],
-            $row['gross_price'],
+            $gross_price, // 👈 modified here
             $row['item_picture'],
             $row['customer_name'],
             $row['party_location']
         );
+
         $stmt->execute();
         $stmt->close();
 
