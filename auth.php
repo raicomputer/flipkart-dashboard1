@@ -15,4 +15,3 @@ if ($current_page != "login.php" && $current_page != "logout.php") {
     }
 }
 
-?>
