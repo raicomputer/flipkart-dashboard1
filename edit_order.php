@@ -1,5 +1,6 @@
 <?php
-include "db.php";
+require_once "auth.php";
+require_once "db.php";
 
 if (!isset($_GET['id'])) {
     die("Invalid request");
@@ -50,7 +51,7 @@ if (isset($_POST['update'])) {
 }
 ?>
 
-<?php include "auth.php"; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
