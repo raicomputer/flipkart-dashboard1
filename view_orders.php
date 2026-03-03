@@ -1127,6 +1127,7 @@ if (isset($_GET['inward_returned_id'])) {
 
         $stmt->close();
     }
+    
 
     $res->close();
 
