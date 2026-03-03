@@ -11,9 +11,10 @@ if (!$conn) {
 }
 
 
+require_once "auth.php";
+require_once "db.php";
 
-
-include 'score_board_logic.php';
+//include 'score_board_logic.php';
 //include 'save_return_reason.php';
 
 // Start  filter session================================================= 
