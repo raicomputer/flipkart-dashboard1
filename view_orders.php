@@ -794,7 +794,7 @@ if (isset($_POST['edit_return'])) {
 
     if ($update->execute()) {
         // Use session message to show alert after redirect
-        session_start();
+        //session_start();
         $_SESSION['success_msg'] = "✅ Return amount updated successfully!";
         header("Location: view_orders.php");
         exit;
