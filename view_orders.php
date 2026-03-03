@@ -533,7 +533,7 @@ if (isset($_GET['cust_return_id'])) {
         $del->close();
 
        // session_start();
-       // $_SESSION['success_msg'] = "✅ Order moved to Customer Returns successfully (SR No preserved).";
+        $_SESSION['success_msg'] = "✅ Order moved to Customer Returns successfully (SR No preserved).";
     }
 
     header("Location: view_orders.php");
@@ -799,7 +799,7 @@ if (isset($_POST['edit_return'])) {
         header("Location: view_orders.php");
         exit;
     } else {
-        session_start();
+        //session_start();
         $_SESSION['error_msg'] = "❌ Failed to update return amount.";
         header("Location: view_orders.php");
         exit;
@@ -860,7 +860,7 @@ if (isset($_GET['inward_return_id'])) {
 
         // Step 4: Redirect with success message
        // session_start();
-       // $_SESSION['success_msg'] = "✅ Return moved to Inward To Shop successfully (SR No preserved).";
+        $_SESSION['success_msg'] = "✅ Return moved to Inward To Shop successfully (SR No preserved).";
         header("Location: view_orders.php");
         exit;
     } else {
@@ -907,7 +907,7 @@ if (isset($_GET['spf_claim_id'])) {
         $conn->query("DELETE FROM customer_returns WHERE sr_no = $id");
 
         // Step 4: Redirect with message
-        session_start();
+        //session_start();
         $_SESSION['success_msg'] = "✅ Record moved to SPF Claims successfully (SR No preserved).";
         header("Location: view_orders.php");
         exit;
@@ -973,7 +973,7 @@ if (isset($_GET['reverse1_returned_id'])) {
         $del->execute();
         $del->close();
 
-        session_start();
+        //session_start();
         $_SESSION['success_msg'] = "✅ Record moved back to Delivered Orders successfully!";
     }
 
@@ -1153,7 +1153,7 @@ if (isset($_GET['spf_returned_id'])) {
         $conn->query("DELETE FROM returned_orders WHERE sr_no = $id");
 
         // Step 4: Redirect with message
-        session_start();
+       // session_start();
         $_SESSION['success_msg'] = "✅ Record moved to SPF Claims successfully (SR No preserved).";
         header("Location: view_orders.php");
         exit;
@@ -1425,7 +1425,7 @@ if (isset($_GET['reverse_inward_sr_no'])) {
         $del->execute();
         $del->close();
 
-        session_start();
+        //session_start();
         $_SESSION['success_msg'] = "✅ Record moved back to Delivered Orders successfully!";
     }
 
