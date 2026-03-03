@@ -808,28 +808,21 @@ if (isset($_POST['edit_return'])) {
 
 
 // --- two = Move Customer Return to Inward To Shop OK---
-//---------- 2. Inward Return (Move from customer_returns → inward_to_shop) ----------
 if (isset($_GET['inward_return_id'])) {
     $id = intval($_GET['inward_return_id']);
 
-    // Step 1: Fetch the record from customer_returns
-    $result = $conn->query("SELECT * FROM customer_returns WHERE sr_no = $id");
+    // Fetch record safely
+    $stmtFetch = $conn->prepare("SELECT * FROM customer_returns WHERE sr_no = ?");
+    $stmtFetch->bind_param("i", $id);
+    $stmtFetch->execute();
+    $result = $stmtFetch->get_result();
+
     if ($row = $result->fetch_assoc()) {
 
-        // 🔥 Simulated Trigger Logic
+        // Keep original gross_price (DO NOT modify)
         $gross_price = $row['gross_price'];
 
-        if ($gross_price <= 0) {
-            $gross_price = 10;
-
-            // Optional: also update main orders table (like your original trigger)
-            $updateOrder = $conn->prepare("UPDATE orders SET gross_price = 10 WHERE order_id = ?");
-            $updateOrder->bind_param("s", $row['order_id']);
-            $updateOrder->execute();
-            $updateOrder->close();
-        }
-
-        // Step 2: Insert into inward_to_shop
+        // Insert into inward_to_shop (original value)
         $stmt = $conn->prepare("
             INSERT INTO inward_to_shop (
                 sr_no, order_id, order_date, order_type, product_name,
@@ -846,7 +839,7 @@ if (isset($_GET['inward_return_id'])) {
             $row['order_type'],
             $row['product_name'],
             $row['quantity'],
-            $gross_price, // 👈 modified here
+            $gross_price, // 👈 original value
             $row['item_picture'],
             $row['customer_name'],
             $row['party_location']
@@ -855,17 +848,29 @@ if (isset($_GET['inward_return_id'])) {
         $stmt->execute();
         $stmt->close();
 
-        // Step 3: Delete the record from customer_returns
-        $conn->query("DELETE FROM customer_returns WHERE sr_no = $id");
+        // 🔥 TRIGGER LOGIC (AFTER INSERT)
+        if ($gross_price <= 0) {
 
-        // Step 4: Redirect with success message
-       // session_start();
-        $_SESSION['success_msg'] = "✅ Return moved to Inward To Shop successfully (SR No preserved).";
-        header("Location: view_orders.php");
-        exit;
-    } else {
-        echo "<script>alert('❌ Record not found in Customer Returns!');</script>";
+            $update = $conn->prepare("
+                UPDATE orders 
+                SET gross_price = 10 
+                WHERE order_id = ?
+            ");
+
+            $update->bind_param("s", $row['order_id']);
+            $update->execute();
+            $update->close();
+        }
+
+        // Delete from customer_returns
+        $del = $conn->prepare("DELETE FROM customer_returns WHERE sr_no = ?");
+        $del->bind_param("i", $id);
+        $del->execute();
+        $del->close();
     }
+
+    header("Location: view_orders.php");
+    exit;
 }
 
 
