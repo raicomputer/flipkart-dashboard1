@@ -1,5 +1,6 @@
 <?php
 require_once 'db.php';
+require_once "auth.php";
 
 /* =========================================================
    PAYMENT HISTORY (RESPECTS MONTH FILTER)
@@ -202,7 +203,7 @@ if ($performance_score >= 85) {
 
 ?>
 
-<?php include "auth.php"; ?>
+
 
 
 <div class="card mb-4 border-info">

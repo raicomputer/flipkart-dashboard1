@@ -1425,7 +1425,7 @@ if (isset($_GET['reverse_inward_sr_no'])) {
 
 ?>
 
-<?php include "auth.php"; ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
