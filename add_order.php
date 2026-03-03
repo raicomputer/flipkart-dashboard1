@@ -180,7 +180,7 @@
             }
 
             if (!path.startsWith('http')) {
-                path = window.location.origin + '/flipkart_dashboard1/' + path.replace(/^\/+/, '');
+                path = window.location.origin + '/' + path.replace(/^\/+/, '');
             }
 
             img.src = path;
