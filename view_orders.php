@@ -1127,7 +1127,7 @@ if (isset($_GET['inward_returned_id'])) {
 
         $stmt->close();
     }
-    
+
 
     $res->close();
 
@@ -1339,6 +1339,19 @@ if (isset($_GET['approve_spf'])) {
 
         // Step 4: Execute insert + delete from source
         if ($stmt->execute()) {
+
+            // 🔥 TRIGGER LOGIC (Same as previous handler)
+    if ($gross_price <= 0) {
+        $update = $conn->prepare("
+            UPDATE orders 
+            SET gross_price = 10 
+            WHERE order_id = ?
+        ");
+        $update->bind_param("s", $order_id);  // change to "i" if order_id is integer
+        $update->execute();
+        $update->close();
+    }
+
             $delete_stmt = $conn->prepare("DELETE FROM spf_claims WHERE sr_no = ?");
             $delete_stmt->bind_param("i", $src_sr_no);
             $delete_stmt->execute();
