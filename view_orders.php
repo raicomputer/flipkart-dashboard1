@@ -1,15 +1,17 @@
 <?php
-// view_orders.php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "seller_db1";
+$host = "sql12.freesqldatabase.com";
+$user = "sql12818488";
+$password = "AiNkWRH4Q5";
+$database = "sql12818488";
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+$conn = mysqli_connect($host, $user, $password, $database);
+
+if (!$conn) {
+    die("❌ Connection Failed: " . mysqli_connect_error());
 }
+
+echo "✅ Database Connected Successfully!";
+
 
 include 'score_board_logic.php';
 //include 'save_return_reason.php';
