@@ -532,8 +532,8 @@ if (isset($_GET['cust_return_id'])) {
         $del->execute();
         $del->close();
 
-        session_start();
-        $_SESSION['success_msg'] = "✅ Order moved to Customer Returns successfully (SR No preserved).";
+       // session_start();
+       // $_SESSION['success_msg'] = "✅ Order moved to Customer Returns successfully (SR No preserved).";
     }
 
     header("Location: view_orders.php");
