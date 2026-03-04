@@ -85,7 +85,11 @@
                                 <option value="3CFAN">3CFAN</option>
                                 <option value="I33240">I33240</option>
                                 <option value="MOUSE">MOUSE</option>
-                                "MOUSE":
+                                <option value="12DCFAN">12VDCFAN</option>
+                                <option value="2DCF&ADAP">2DCF&ADAP</option>
+                                <option value="I32ND">I32ND</option>
+                                <option value="1CFAN">1CFAN</option>
+                                
                             </select>
                         </div>
                         <div class="col-md-4">
@@ -168,7 +172,11 @@
             "3CFAN": "uploads/3cfan.png",
             "I33240": "uploads/i33240.png",
             "MOUSE": "uploads/mouse.png",
-        };
+            "12DCFAN": "uploads/12dcfan.png",
+            "2DCF&ADAP": "uploads/2dcf&adap.png",
+            "I32ND": "uploads/i32nd.png",
+            "1CFAN": "uploads/1cfan.png",
+            };
 
         function showPreview(path) {
             const preview = document.getElementById('imagePreview');

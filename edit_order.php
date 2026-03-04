@@ -119,6 +119,10 @@ if (isset($_POST['update'])) {
                                 <option value="3CFAN" <?= ($order['product_name'] == '3CFAN') ? 'selected' : '' ?>>3CFAN</option>
                                 <option value="I33240" <?= ($order['product_name'] == 'I33240') ? 'selected' : '' ?>>I33240</option>
                                  <option value="MOUSE" <?= ($order['product_name'] == 'MOUSE') ? 'selected' : '' ?>>MOUSE</option>
+                                <option value="12DCFAN" <?= ($order['product_name'] == '12DCFAN') ? 'selected' : '' ?>>12VDCFAN</option>
+                                <option value="2DCF&ADAP" <?= ($order['product_name'] == '2DCF&ADAP') ? 'selected' : '' ?>>2DCF&ADAP</option>
+                                <option value="I32ND" <?= ($order['product_name'] == 'I32ND') ? 'selected' : '' ?>>I32ND</option>
+                                <option value="1CFAN" <?= ($order['product_name'] == '1CFAN') ? 'selected' : '' ?>>1CFAN</option>
                             </select>
 
 
@@ -202,7 +206,10 @@ if (isset($_POST['update'])) {
             "ZEBH61": "uploads/zebh61.png",
             "I33240": "uploads/i33240.png",
             "MOUSE": "uploads/mouse.png",
-
+            "12DCFAN": "uploads/12dcfan.png",
+            "2DCF&ADAP": "uploads/2dcf&adap.png",
+            "I32ND": "uploads/i32nd.png",
+            "1CFAN": "uploads/1cfan.png",
             
         };
 
