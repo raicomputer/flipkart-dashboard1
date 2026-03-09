@@ -123,6 +123,7 @@ if (isset($_POST['update'])) {
                                 <option value="2DCF&ADAP" <?= ($order['product_name'] == '2DCF&ADAP') ? 'selected' : '' ?>>2DCF&ADAP</option>
                                 <option value="I32ND" <?= ($order['product_name'] == 'I32ND') ? 'selected' : '' ?>>I32ND</option>
                                 <option value="1CFAN" <?= ($order['product_name'] == '1CFAN') ? 'selected' : '' ?>>1CFAN</option>
+                                <option value="SONY19" <?= ($order['product_name'] == 'SONY19') ? 'selected' : '' ?>>SONY19</option>
                             </select>
 
 
@@ -210,7 +211,7 @@ if (isset($_POST['update'])) {
             "2DCF&ADAP": "uploads/2dcf&adap.png",
             "I32ND": "uploads/i32nd.png",
             "1CFAN": "uploads/1cfan.png",
-            
+            "SONY19": "uploads/sonyadap.png",
         };
 
         function showPreview(path) {

@@ -89,6 +89,7 @@
                                 <option value="2DCF&ADAP">2DCF&ADAP</option>
                                 <option value="I32ND">I32ND</option>
                                 <option value="1CFAN">1CFAN</option>
+                                <option value="SONY19">SONY19</option>
                                 
                             </select>
                         </div>
@@ -176,6 +177,7 @@
             "2DCF&ADAP": "uploads/2dcf&adap.png",
             "I32ND": "uploads/i32nd.png",
             "1CFAN": "uploads/1cfan.png",
+            "SONY19": "uploads/sonyadap.png"
             };
 
         function showPreview(path) {
